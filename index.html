@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Inches to Feet Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .input-group input {
+            width: 45%;
+        }
+
+        #output {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Inches to Feet Converter</h2>
+
+    <label for="inches">Inches:</label>
+    <input type="number" id="inches" oninput="convertToFeet()">
+
+    <div class="input-group">
+        <div>
+            <label for="feet">Feet:</label>
+            <input type="number" id="feet" oninput="convertToInches()">
+        </div>
+        <div>
+            <label for="remainingInches">Remaining Inches:</label>
+            <input type="number" id="remainingInches" oninput="convertToInches()">
+        </div>
+    </div>
+
+    <p>Result: <span id="output"></span></p>
+
+    <script>
+        function convertToFeet() {
+            const inches = document.getElementById('inches').value;
+            const feet = Math.floor(inches / 12);
+            const remainingInches = inches % 12;
+
+            document.getElementById('feet').value = feet;
+            document.getElementById('remainingInches').value = remainingInches;
+            document.getElementById('output').textContent = `${feet}'${remainingInches}"`;
+        }
+
+        function convertToInches() {
+            const feet = document.getElementById('feet').value;
+            const remainingInches = document.getElementById('remainingInches').value;
+            const inches = (feet * 12) + parseInt(remainingInches);
+
+            document.getElementById('inches').value = inches;
+            document.getElementById('output').textContent = `${feet}'${remainingInches}"`;
+        }
+    </script>
+</body>
+
+</html>
